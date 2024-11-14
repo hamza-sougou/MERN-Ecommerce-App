@@ -1,0 +1,39 @@
+.dropdownProfile {
+  z-index: 9999;
+  position: absolute;
+  top: 3.8rem;
+  right: 15rem;
+  width: 220px;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid gray;
+}
+
+.dropdownProfile::before {
+  content: "";
+  position: absolute;
+  top: -2.38rem;
+  right: 1.45rem;
+  width: 35px;
+  height: 38px;
+
+  background: none;
+  border-top: 2px solid gray;
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid #fff;
+}
+
+@media screen and (min-width: 475px) and (max-width: 979px) {
+  .dropdownProfile {
+    z-index: 9999;
+    position: absolute;
+    top: 4.1rem;
+    right: 6rem;
+    width: 220px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid gray;
+  }
+}
