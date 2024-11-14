@@ -28,11 +28,10 @@
   .dropdownProfile {
     z-index: 9999;
     position: absolute;
-    top: 4.1rem;
-    right: 6rem;
+    top: 4rem;
+    right: 11rem;
     width: 220px;
     padding: 10px;
-    border-radius: 5px;
     background: #fff;
     border: 1px solid gray;
   }

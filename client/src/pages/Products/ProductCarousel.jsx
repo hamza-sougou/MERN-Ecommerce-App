@@ -32,7 +32,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-4 xl:block lg:block md:block">
+    <div className="mb-4 flex w-full">
       {isLoading ? null : error ? (
         <Message variant="danger">
           {error?.data?.message || error.message}
@@ -66,8 +66,10 @@ const ProductCarousel = () => {
                 <div className="flex justify-between w-[20rem]">
                   <div className="one ">
                     <h2>{name}</h2>
-                    <div className="flex items-center justify-center bg-orange-500 rounded-full py-1 mt-2 px-2 w-[10rem]">
-                      <p>{formatPrice(price)} F CFA</p>
+                    <div className="flex items-center justify-center bg-orange-300 text-orange-700 rounded py-1 mt-2 px-2 w-[10rem]">
+                      <p className="font-semibold">
+                        {formatPrice(price)} F CFA
+                      </p>
                     </div>
 
                     <br />

@@ -10,7 +10,7 @@ const Home = () => {
   const { data, isLoading, isError } = useGetProductsQuery({ keyword });
 
   return (
-    <>
+    <div className="">
       {!keyword ? <Header /> : null}
       {isLoading ? (
         <Loader />
@@ -20,15 +20,14 @@ const Home = () => {
         </Message>
       ) : (
         <>
-          <div className="flex justify-between items-center">
-            <h1 className="ml-[20rem] mt-[10rem] text-[3rem]">
+          <div className="flex flex-row w-full px-5 md:px-[5rem] lg:px-[10rem] items-center">
+            <h1 className="flex-1 flex text-3xl md:text-[3rem]">
               Produits Spéciaux
             </h1>
-            <Link
-              to="/shop"
-              className="bg-pink-600 font-bold rounded-full py-2 px-10 mr-[18rem] mt-[10rem]"
-            >
-              Boutique
+            <Link to="/shop">
+              <button className="bg-orange-500 flex-1 flex text-white font-semibold rounded px-5 py-2">
+                Boutique
+              </button>
             </Link>
           </div>
           <div>
@@ -42,7 +41,7 @@ const Home = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

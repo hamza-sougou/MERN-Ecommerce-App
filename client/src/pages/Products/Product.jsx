@@ -7,22 +7,22 @@ const formatPrice = (price) => {
 
 const Product = ({ product }) => {
   return (
-    <div className="w-[30rem] ml-[2rem] p-3 relative">
+    <div className="flex flex-col items-center p-5 rounded">
       <div className="relative">
         <Link to={`/product/${product._id}`}>
           <img
             src={product.image}
             alt={product.name}
-            className="w-[30rem] h-[40rem] rounded"
+            className="w-72 h-96 object-cover rounded-lg"
           />
         </Link>
-        <HeartIcon product={product} />
+        <HeartIcon product={product} className="absolute top-2 right-2" />
       </div>
-      <div className="p-4">
+      <div className="mt-4 w-full">
         <Link to={`/product/${product._id}`}>
           <div className="flex justify-between items-center">
-            <div className="text-lg">{product.name}</div>
-            <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+            <h2 className="text-lg font-semibold">{product.name}</h2>
+            <span className="bg-orange-300 text-orange-700 text-sm font-medium px-2.5 py-0.5 rounded">
               {formatPrice(product.price)} F CFA
             </span>
           </div>

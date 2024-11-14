@@ -11,22 +11,22 @@ const Header = () => {
   }
 
   if (error) {
-    <h1>ERROR</h1>;
+    return <h1>ERROR</h1>;
   }
 
   return (
     <>
-      <div className="flex justify-around">
-        <div className="xl:block lg:hidden md:hidden sm:hidden">
-          <div className="grid grid-cols-2">
-            {data?.map((product) => (
-              <div key={product._id}>
-                <SmallProduct product={product} />
-              </div>
-            ))}
-          </div>
+      <div className="flex w-full">
+        <div className="flex-1 w-full flex flex-wrap ">
+          {data?.map((product) => (
+            <div key={product._id} className="w-full md:w-1/2 p-2">
+              <SmallProduct product={product} />
+            </div>
+          ))}
         </div>
-        <ProductCarousel />
+        <div className="hidden xl:flex-1 xl:flex">
+          <ProductCarousel />
+        </div>
       </div>
     </>
   );

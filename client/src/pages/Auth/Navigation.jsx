@@ -91,7 +91,7 @@ const Navigation = () => {
           </section>
         </div>
 
-        <section className="flex items-center gap-6 sm:mr-0  ">
+        <section className="flex items-center mr-0 gap-6  ">
           {/* DropdownProfile */}
           <div
             ref={dropdownRef}
