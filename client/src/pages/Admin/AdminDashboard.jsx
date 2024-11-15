@@ -11,6 +11,7 @@ import AdminMenu from "./AdminMenu";
 import OrderList from "./OrderList";
 import Loader from "../../components/Loader";
 import { FaChartColumn } from "react-icons/fa6";
+import { FaCartArrowDown, FaUsers } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const { data: sales, isLoading } = useGetTotalSalesQuery();
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
       tooltip: {
         theme: "dark",
       },
-      colors: ["#00E396"],
+      colors: ["#ff5a1f"],
       dataLabels: {
         enabled: true,
       },
@@ -94,11 +95,11 @@ const AdminDashboard = () => {
     <>
       <AdminMenu />
 
-      <section className="xl:ml-[4rem] md:ml-[0rem]">
-        <div className="w-[80%] flex justify-around flex-wrap">
-          <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
-            <div className="font-bold rounded-full w-[3rem] bg-pink-500 text-center p-3">
-              <FaChartColumn className="text-white" />
+      <section className="w-full px-[1rem] lg:px-[10rem] ">
+        <div className="w-full flex flex-col md:flex-row justify-around flex-wrap gap-[3rem]">
+          <div className="flex-1 w-full rounded bg-[#efecec] p-5 mt-5">
+            <div className="font-bold rounded-full w-[50px] h-[50px] bg-orange-500 items-center flex justify-center p-3">
+              <FaChartColumn className="text-white text-xl" />
             </div>
 
             <p className="mt-5">Ventes</p>
@@ -106,9 +107,9 @@ const AdminDashboard = () => {
               {isLoading ? <Loader /> : sales.totalSales} F CFA
             </h1>
           </div>
-          <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
-            <div className="font-bold rounded-full w-[3rem] bg-pink-500 text-center p-3">
-              $
+          <div className="rounded flex-1 w-full bg-[#efecec] p-5 mt-5">
+            <div className="font-bold rounded-full w-[50px] h-[50px] bg-orange-500 items-center flex justify-center p-3">
+              <FaUsers className="text-white text-xl" />
             </div>
 
             <p className="mt-5">Clients</p>
@@ -116,9 +117,9 @@ const AdminDashboard = () => {
               {isLoading ? <Loader /> : customers?.length}
             </h1>
           </div>
-          <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
-            <div className="font-bold rounded-full w-[3rem] bg-pink-500 text-center p-3">
-              $
+          <div className="rounded flex-1 w-full bg-[#efecec] p-5 mt-5">
+            <div className="font-bold rounded-full w-[50px] h-[50px] bg-orange-500 items-center flex justify-center p-3">
+              <FaCartArrowDown className="text-white text-xl" />
             </div>
 
             <p className="mt-5">Toutes les commandes</p>
@@ -128,12 +129,12 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="ml-[10rem] mt-[4rem]">
+        <div className="mt-[4rem]">
           <Chart
             options={state.options}
             series={state.series}
             type="bar"
-            width="70%"
+            width="100%"
           />
         </div>
 

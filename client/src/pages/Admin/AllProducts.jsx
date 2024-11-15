@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { useAllProductsQuery } from "../../redux/api/productApiSlice";
+import { FaArrowRight } from "react-icons/fa6";
 import AdminMenu from "./AdminMenu";
 import Loader from "../../components/Loader";
+import { useState } from "react";
 
 const AllProducts = () => {
   const { data: products, isLoading, isError } = useAllProductsQuery();
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
 
   if (isLoading) {
     return <Loader />;
@@ -15,27 +19,36 @@ const AllProducts = () => {
     return <div>Erreur de Chargement des Produits</div>;
   }
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const totalPages = Math.ceil(products.length / productsPerPage);
+
   return (
-    <div className="container mx-[9rem]">
+    <div className="w-full px-[1rem] xl:px-[10rem]">
       <div className="flex flex-col md:flex-row">
         <div className="p-3">
           <div className="ml-[2rem] text-xl font-bold h-12">
             Tous les produits ({products.length})
           </div>
-          <div className="flex flex-wrap justify-around items-center">
-            {products.map((product) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {currentProducts.map((product) => (
               <Link
                 key={product._id}
                 to={`/admin/product/update/${product._id}`}
-                className="block mb-4 overflow-hidden"
+                className="block mb-4 overflow-hidden  border-gray-200 rounded"
               >
-                <div className="flex">
+                <div className="flex w-full">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-[10rem] object-cover"
+                    className="w-[5rem] md:w-[10rem] h-[5rem] md:h-[10rem] object-cover"
                   />
-                  <div className="p-4 flex flex-col justify-around">
+                  <div className="p-4 flex flex-col justify-around w-full">
                     <div className="flex justify-between">
                       <h5 className="text-xl font-semibold mb-2">
                         {product?.name}
@@ -44,33 +57,16 @@ const AllProducts = () => {
                         {moment(product.createdAt).format("MMMM Do YYYY")}
                       </p>
                     </div>
-
-                    <p className="text-gray-400 xl:w-[30rem] md:[20rem] sm:w-[10rem] text-sm mb-4">
-                      {product?.description?.substring(0, 160)}...
+                    <p className="text-gray-400 text-sm mb-4">
+                      {product?.description?.substring(0, 60)}...
                     </p>
                     <div className="flex justify-between">
                       <Link
                         to={`/admin/product/update/${product._id}`}
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white 
-                        bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline:none focus: ring-pink-300
-                         dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded hover:bg-orange-600 transition-all group"
                       >
-                        Mettre à jour
-                        <svg
-                          className="w-3.5 h-3.5 ml-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
+                        Mettre à jour{" "}
+                        <FaArrowRight className="text-md ml-2 group-hover:ml-4 transition-all" />
                       </Link>
                       <p>XOF {product.price}</p>
                     </div>
@@ -79,10 +75,25 @@ const AllProducts = () => {
               </Link>
             ))}
           </div>
+          {/* Pagination */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => setCurrentPage(index + 1)}
+                className={`px-3 py-1 rounded ${
+                  currentPage === index + 1
+                    ? "bg-orange-500 text-white"
+                    : "bg-gray-200"
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="md:w-1/4 p-3 mt-2">
-          <AdminMenu />
-        </div>
+
+        <AdminMenu />
       </div>
     </div>
   );

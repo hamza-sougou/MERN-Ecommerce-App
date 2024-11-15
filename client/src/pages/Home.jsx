@@ -20,7 +20,7 @@ const Home = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-row w-full px-5 md:px-[5rem] lg:px-[10rem] items-center">
+          <div className="flex flex-row w-full px-5 md:px-[5rem] lg:px-[10rem] pt-[5rem] items-center">
             <h1 className="flex-1 flex text-3xl md:text-[3rem]">
               Produits Spéciaux
             </h1>

@@ -89,16 +89,15 @@ const Shop = () => {
   const handleResetFilters = () => {
     setMinPrice("");
     setMaxPrice("");
-    dispatch(setChecked([])); // Optionnel: réinitialiser les marques cochées
-    // Vous pouvez également réinitialiser les produits selon la logique que vous avez
+    dispatch(setChecked([]));
   };
 
   return (
     <>
-      <div className="container mx-auto">
-        <div className="flex md:flex-row ">
-          <div className="bg-[#151515] p-3 mt-2 mb-2">
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+      <div>
+        <div className="flex">
+          <div className="bg-[#efecec] p-3 -mt-3 h-full hidden md:block">
+            <h2 className="h4 text-center py-2 bg-red- rounded-full mb-2">
               Filtrer par catégorie
             </h2>
             <div className="p-5 w-[15rem]">
@@ -109,14 +108,13 @@ const Shop = () => {
                       type="checkbox"
                       id={c._id}
                       onChange={(e) => handleCheck(e.target.checked, c._id)}
-                      className="w-4 h-4 text-pink-600 bg-grey-100 border-gray-300   
-                      rounded focus:ring-pink-500 dark:focus:ring-pink-600  
-                       dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700   
-                       dark:border-gray-600"
+                      className="w-4 h-4 text-orange-600 bg-grey-100 border-gray-300   
+                      rounded focus:ring-orange-500 focus:ring-2    
+                      "
                     />
                     <label
                       htmlFor={c._id}
-                      className="ml-2 text-sm font-medium text-white dark:text-gray-300"
+                      className="ml-2 text-sm font-medium  "
                     >
                       {c.name}
                     </label>
@@ -125,7 +123,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+            <h2 className="h4 text-center py-2  rounded-full mb-2">
               Filtrer par marque
             </h2>
             <div className="p-5">
@@ -136,21 +134,18 @@ const Shop = () => {
                     id={brand}
                     name="brand"
                     onChange={() => handleBrandClick(brand)}
-                    className="w-4 h-4 text-pink-400 bg-gray-100 border-gray-300   
-                    focus:ring-pink-500 dark:focus:ring-pink-600 dark:ring-offset-gray-800  
-                     focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-4 h-4 text-orange-400 bg-gray-100 border-gray-300   
+                    focus:ring-orange-500 
+                     focus:ring-2"
                   />
-                  <label
-                    htmlFor={brand}
-                    className="ml-2 text-sm font-medium text-white dark:text-gray-300"
-                  >
+                  <label htmlFor={brand} className="ml-2 text-sm font-medium ">
                     {brand}
                   </label>
                 </div>
               ))}
             </div>
 
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+            <h2 className="h4 text-center py-2  rounded-full mb-2">
               Filtrer par prix
             </h2>
             <div className="p-5 w-[15rem]">
@@ -160,7 +155,7 @@ const Shop = () => {
                 value={minPrice}
                 onChange={handleMinPriceChange}
                 className="w-full px-3 py-2 placeholder-gray-400 border  
-                 rounded-lg focus:outline-none focus:ring focus:ring-pink-600 mb-2"
+                 rounded-lg focus:outline-none focus:ring focus:ring-orange-600 mb-2"
               />
               <input
                 type="number"
@@ -168,12 +163,12 @@ const Shop = () => {
                 value={maxPrice}
                 onChange={handleMaxPriceChange}
                 className="w-full px-3 py-2 placeholder-gray-400 border  
-                 rounded-lg focus:outline-none focus:ring focus:ring-pink-600"
+                 rounded-lg focus:outline-none focus:ring focus:ring-orange-600"
               />
             </div>
             <div className="p-5 pt-0">
               <button
-                className="w-full border my-4 py-2 hover:bg-white hover:text-black"
+                className="w-full border-[2px] border-black my-4 py-2 hover:bg-black hover:text-white transition-all"
                 onClick={handleResetFilters}
               >
                 Réinitialiser
@@ -181,11 +176,11 @@ const Shop = () => {
             </div>
           </div>
 
-          <div className="p-3">
+          <div className="p-3 w-full ">
             <h2 className="h4 text-center mb-2">
               {products?.length} produits trouvés
             </h2>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap w-full">
               {products?.length === 0 ? (
                 <Loader />
               ) : (
