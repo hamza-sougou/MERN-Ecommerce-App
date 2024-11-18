@@ -45,7 +45,7 @@ const Navigation = () => {
   return (
     <main className="lg:px-[10rem] px-4 bg-white">
       <nav
-        className="flex justify-between items-center py-6 pr-[5rem] lg:pr-0"
+        className="flex  justify-between items-center py-6 pr-[5rem] lg:pr-0"
         id="navigation-container"
       >
         <section className="flex items-center gap-4">
@@ -73,6 +73,15 @@ const Navigation = () => {
             <></>
           )} */}
         </section>
+
+        <Link
+          to="/shop"
+          className="h-[5.5rem] bg-[#efecec] absolute left-[50%] translate-x-[-50%] px-5 hidden md:flex items-center"
+        >
+          <div className="text-orange-500 underline font-semibold">
+            Voir la Boutique
+          </div>
+        </Link>
 
         <div
           className={clsx(

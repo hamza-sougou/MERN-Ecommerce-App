@@ -44,7 +44,7 @@ const PlaceOrder = () => {
     <>
       <ProgressSteps step1 step2 step3 />
 
-      <div className="container mx-auto mt-8">
+      <div className="w-full px-[1rem] md:px-[10rem] mt-8">
         {cart.cartItems.length === 0 ? (
           <Message>Votre panier est vide</Message>
         ) : (
@@ -85,7 +85,7 @@ const PlaceOrder = () => {
         )}
         <div className="mt-8">
           <h2 className="text-2xl font-semibold mb-5">Sommaire de commande</h2>
-          <div className="flex justify-between flex-wrap p-8 bg-[#181818]">
+          <div className="flex justify-between flex-wrap p-8 bg-[#efecec]">
             <ul className="text-lg">
               <li>
                 <span className="font-semibold mb-4">Articles:</span>{" "}
@@ -120,14 +120,16 @@ const PlaceOrder = () => {
               {cart.paymentMethod}
             </div>
           </div>
-          <button
-            type="button"
-            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg w-full mt-4"
-            disabled={cart.cartItems === 0}
-            onClick={placeOrderHandler}
-          >
-            Passer la commande
-          </button>
+          <div className="flex w-full items-center justify-center">
+            <button
+              type="button"
+              className="bg-orange-500 text-white py-2 px-4 rounded text-lg w-full md:w-[50%] mt-4"
+              disabled={cart.cartItems === 0}
+              onClick={placeOrderHandler}
+            >
+              Passer la commande
+            </button>
+          </div>
 
           {isLoading && <Loader />}
         </div>

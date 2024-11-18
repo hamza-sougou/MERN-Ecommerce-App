@@ -45,7 +45,7 @@ const ProductList = () => {
       if (data.error) {
         toast.error("Échec de la création du produit. Veuillez réessayer.");
       } else {
-        toast.success(`${data.name} is created`);
+        toast.success(`${data.name} a été créé.`);
         navigate("/");
       }
     } catch (error) {

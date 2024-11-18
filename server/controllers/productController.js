@@ -5,20 +5,19 @@ const addProduct = asyncHandler(async (req, res) => {
   try {
     const { name, description, price, category, quantity, brand } = req.fields;
 
-    // Validation
     switch (true) {
       case !name:
-        return res.json({ error: "Name is required" });
+        return res.json({ error: "Le nom est requis" });
       case !brand:
-        return res.json({ error: "Brand is required" });
+        return res.json({ error: "La marque est requise" });
       case !description:
-        return res.json({ error: "Description is required" });
+        return res.json({ error: "La description est requise" });
       case !price:
-        return res.json({ error: "Price is required" });
+        return res.json({ error: "Le prix est requis" });
       case !category:
-        return res.json({ error: "Category is required" });
+        return res.json({ error: "La catégorie est requise" });
       case !quantity:
-        return res.json({ error: "Quantity is required" });
+        return res.json({ error: "La quantité est requise" });
     }
 
     const product = new Product({ ...req.fields });
@@ -34,20 +33,19 @@ const updateProductDetails = asyncHandler(async (req, res) => {
   try {
     const { name, description, price, category, quantity, brand } = req.fields;
 
-    // Validation
     switch (true) {
       case !name:
-        return res.json({ error: "Name is required" });
+        return res.json({ error: "Le nom est requis" });
       case !brand:
-        return res.json({ error: "Brand is required" });
+        return res.json({ error: "La marque est requise" });
       case !description:
-        return res.json({ error: "Description is required" });
+        return res.json({ error: "La description est requise" });
       case !price:
-        return res.json({ error: "Price is required" });
+        return res.json({ error: "Le prix est requis" });
       case !category:
-        return res.json({ error: "Category is required" });
+        return res.json({ error: "La catégorie  est requise" });
       case !quantity:
-        return res.json({ error: "Quantity is required" });
+        return res.json({ error: "La quantité est requis" });
     }
 
     const product = await Product.findByIdAndUpdate(
@@ -110,11 +108,11 @@ const fetchProductById = asyncHandler(async (req, res) => {
       return res.json(product);
     } else {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("Produit introuvable");
     }
   } catch (error) {
     console.error(error);
-    res.status(404).json({ error: "Product not found" });
+    res.status(404).json({ error: "Produit introuvable" });
   }
 });
 
@@ -144,7 +142,7 @@ const addProductReview = asyncHandler(async (req, res) => {
 
       if (alreadyReviewed) {
         res.status(400);
-        throw new Error("Product already reviewed");
+        throw new Error("Produit déjà évalué");
       }
 
       const review = {
@@ -163,10 +161,10 @@ const addProductReview = asyncHandler(async (req, res) => {
         product.reviews.length;
 
       await product.save();
-      res.status(201).json({ message: "Review added" });
+      res.status(201).json({ message: "Avis ajouté" });
     } else {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("Produit introuvable");
     }
   } catch (error) {
     console.error(error);

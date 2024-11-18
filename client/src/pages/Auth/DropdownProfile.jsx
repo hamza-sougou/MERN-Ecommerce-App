@@ -27,13 +27,13 @@ const DropdownProfile = () => {
       {!userInfo ? (
         <div>
           <Link to="/login">
-            <button className="w-full py-2 bg-black text-white mb-3">
+            <button className="w-full py-2 rounded bg-black text-white mb-3">
               Connexion
             </button>
           </Link>
 
           <Link to="/register">
-            <button className="w-full py-2 bg-orange-500 text-white">
+            <button className="w-full py-2 rounded bg-orange-500 text-white">
               Inscription
             </button>
           </Link>

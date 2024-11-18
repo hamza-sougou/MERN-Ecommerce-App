@@ -91,16 +91,16 @@ const Order = () => {
   ) : error ? (
     <Message variant="danger">{error.data.message}</Message>
   ) : (
-    <div className="container flex flex-col ml-[10rem] md:flex-row">
+    <div className="container flex flex-col w-full px-[1rem] md:px-[10rem] md:flex-row">
       <div className="md:w-2/3 pr-4">
         <div className="border gray-300 mt-5 pb-4 mb-5">
           {order.orderItems.length === 0 ? (
             <Message>Votre commande est vide</Message>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-[80%]">
+              <table className="w-full">
                 <thead className="border-b-2">
-                  <tr>
+                  <tr className="text-sm md:text-lg">
                     <th className="p-2">Image</th>
                     <th className="p-2">Produit</th>
                     <th className="p-2 text-center">Quantité</th>
@@ -119,13 +119,17 @@ const Order = () => {
                         />
                       </td>
 
-                      <td className="p-2">
+                      <td className="p-2 text-sm md:text-lg">
                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </td>
-                      <td className="p-2 text-center">{item.qty}</td>
-                      <td className="p-2 text-center">{item.price}</td>
-                      <td className="p-2 text-center">
-                        F CFA{item.qty * item.price}
+                      <td className="p-2 text-center text-sm md:text-lg">
+                        {item.qty}
+                      </td>
+                      <td className="p-2 text-center text-sm md:text-lg">
+                        {item.price}
+                      </td>
+                      <td className="p-2 text-center text-sm md:text-lg">
+                        {item.qty * item.price} F
                       </td>
                     </tr>
                   ))}
@@ -140,25 +144,25 @@ const Order = () => {
         <div className="mt-5 border-gray-300 pb-4 mb-4">
           <h2 className="text-xl font-bold mb-2">Expédition</h2>
           <p className="mb-4 mt-4">
-            <strong className="text-pink-500">Commande: </strong>
+            <strong className="text-orange-500">Commande: </strong>
             {order._id}
           </p>
           <p className="mb-4">
-            <strong className="text-pink-500">Nom: </strong>
+            <strong className="text-orange-500">Nom: </strong>
             {order.user.username}
           </p>
 
           <p className="mb-4">
-            <strong className="text-pink-500">Email: </strong>
+            <strong className="text-orange-500">Email: </strong>
             {order.user.email}
           </p>
           <p className="mb-4">
-            <strong className="text-pink-500">Adresse: </strong>
+            <strong className="text-orange-500">Adresse: </strong>
             {order.shippingAddress.address}, {order.shippingAddress.city},{" "}
             {order.shippingAddress.postalCode}, {order.shippingAddress.country}
           </p>
           <p className="mb-4">
-            <strong className="text-pink-500">Méthode de paiement: </strong>
+            <strong className="text-orange-500">Méthode de paiement: </strong>
             {order.paymentMethod}
           </p>
 
@@ -218,7 +222,7 @@ const Order = () => {
           <div>
             <button
               type="button"
-              className="bg-pink-500 text-white w-full py-2"
+              className="bg-orange-500 text-white w-full py-2"
               onClick={deliverHandler}
             >
               Marquer comme livrée

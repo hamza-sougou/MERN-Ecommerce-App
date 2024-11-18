@@ -82,7 +82,7 @@ const Profile = () => {
             <div className="mb-4 relative">
               <input
                 type={isVisiblePassword ? "text" : "password"}
-                placeholder="Enter password"
+                placeholder="Nouveau mot de passe"
                 className="w-full py-4 my-2 bg-transparent text-black border-b focus:border-b-2
              border-orange-500 focus:border-orange-500 border-t-0 border-l-0 border-r-0
               outline-none focus:outline-none  focus:ring-0"
@@ -112,14 +112,14 @@ const Profile = () => {
             <div className="flex justify-between">
               <button
                 type="submit"
-                className="bg-orange-500 text-white py-3 px-5 hover:bg-orange-600 cursor-pointer"
+                className="bg-orange-500 text-white py-3 px-5 hover:bg-orange-600 cursor-pointer rounded transition-all"
               >
                 Mettre à jour
               </button>
 
               <Link
                 to="/user-orders"
-                className="bg-black text-white py-3 px-5  hover:bg-black cursor-pointer"
+                className="bg-black text-white py-3 px-5 cursor-pointer rounded"
               >
                 Mes commandes
               </Link>
