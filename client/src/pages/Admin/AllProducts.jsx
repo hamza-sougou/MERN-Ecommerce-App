@@ -19,21 +19,25 @@ const AllProducts = () => {
     return <div>Erreur de Chargement des Produits</div>;
   }
 
+  const sortedProducts = [...products].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
+  const currentProducts = sortedProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
   return (
     <div className="w-full px-[1rem] xl:px-[10rem]">
       <div className="flex flex-col md:flex-row">
         <div className="p-3">
           <div className="ml-[2rem] text-xl font-bold h-12">
-            Tous les produits ({products.length})
+            Tous les produits ({sortedProducts.length})
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {currentProducts.map((product) => (

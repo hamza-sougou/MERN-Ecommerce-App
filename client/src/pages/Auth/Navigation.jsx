@@ -8,7 +8,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import "./Navigation.css";
 import { useSelector } from "react-redux";
 import FavoritesCount from "../Products/FavoritesCount";
-import jayma_logo from "../../assets/jayma_logo.svg";
+import pcu_logo from "../../assets/PCU_logo.svg";
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import clsx from "clsx";
 import { useRef } from "react";
@@ -54,7 +54,7 @@ const Navigation = () => {
             className="text-3xl cursor-pointer lg:hidden"
           />
           <Link to="/" className="text-4xl">
-            <img src={jayma_logo} className="w-[3rem]" alt="logo" />
+            <img src={pcu_logo} className="w-[5rem]" alt="logo" />
           </Link>
 
           {/* {userInfo && !userInfo.isAdmin && (

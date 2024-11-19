@@ -29,7 +29,7 @@ const ProductTabs = ({
 
   return (
     <div className="flex flex-col md:flex-row w-full mr-[1rem] md:mr-0">
-      <section className="flex md:block flex-row  items-center md:mr-[5rem]">
+      <section className="flex md:block flex-row  items-center">
         <div
           className={`flex-1 p-4 cursor-pointer text-md ${
             activeTab === 1 ? "font-bold" : ""
@@ -56,11 +56,11 @@ const ProductTabs = ({
         </div>
       </section>
 
-      <section>
+      <section className="w-[30rem]">
         {activeTab === 1 && (
           <div className="mt-4">
             {userInfo ? (
-              <form onSubmit={submitHandler}>
+              <form onSubmit={submitHandler} className="flex flex-col w-full">
                 <div className="my-2">
                   <label htmlFor="rating" className="block text-xl mb-2">
                     Notes
@@ -71,7 +71,7 @@ const ProductTabs = ({
                     required
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
-                    className="p-2 border rounded w-full"
+                    className="p-2 border rounded flex w-full"
                   >
                     <option selected>Selectionner</option>
                     <option value="1">Très Mauvais</option>
@@ -106,9 +106,9 @@ const ProductTabs = ({
               </form>
             ) : (
               <p>
-                Please{" "}
+                Veuillez{" "}
                 <Link to="/login" className="text-orange-600">
-                  se connecter
+                  vous connecter
                 </Link>{" "}
                 pour laisser un avis
               </p>
@@ -128,7 +128,7 @@ const ProductTabs = ({
               {product.reviews.map((review) => (
                 <div
                   key={review._id}
-                  className="bg-[#efecec] p-4 rounded xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[24rem] mb-5"
+                  className="bg-[#efecec] p-4 rounded xl:ml-[2rem] sm:ml-[0rem]  mb-5"
                 >
                   <div className="flex justify-between">
                     <strong className="text-[#787878]">{review.name}</strong>

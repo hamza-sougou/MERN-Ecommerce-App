@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-import jayma_logo from "../../assets/jayma_logo.svg";
+import pcu_logo from "../../assets/pcu_logo.svg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -48,7 +48,7 @@ const Login = () => {
     <div className="flex bg-white h-screen w-full -my-[1rem] items-center justify-center">
       <div className="flex flex-col w-full lg:w-1/3 bg-orange-50 p-[3rem] justify-between gap-6">
         <div className="flex w-full h-[5rem] justify-center">
-          <img src={jayma_logo} alt="logo" />
+          <img src={pcu_logo} alt="logo" />
         </div>
         <div className="w-full flex flex-col">
           <h2 className="text-3xl font-semibold mb-2">Se connecter</h2>

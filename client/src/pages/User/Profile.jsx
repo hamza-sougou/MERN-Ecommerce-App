@@ -40,7 +40,7 @@ const Profile = () => {
           password,
         }).unwrap();
         dispatch(setCredentials({ ...res }));
-        toast.success("Profile updated successfully");
+        toast.success("Profil mis à jour avec succès");
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }

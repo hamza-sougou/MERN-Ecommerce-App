@@ -16,10 +16,14 @@ import {
   FaStore,
 } from "react-icons/fa";
 import moment from "moment";
+
+import "moment/locale/fr-ch";
 import HeartIcon from "./HeartIcon";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
 import { addToCart } from "../../redux/features/cart/cartSlice";
+
+moment.locale("fr-ch");
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -56,7 +60,7 @@ const ProductDetails = () => {
         comment,
       }).unwrap();
       refetch();
-      toast.success("Review created successfully");
+      toast.success("Produit évalué avec succès");
     } catch (error) {
       toast.error(error?.data || error.message);
     }
@@ -68,7 +72,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="w-full mx-[1rem] md:mx-[10rem]">
+    <div className="w-full px-[1rem] md:px-[10rem]">
       <div>
         <Link to="/" className=" font-semibold hover:underline">
           Retour
@@ -82,9 +86,9 @@ const ProductDetails = () => {
           {error?.data?.message || error.message}
         </Message>
       ) : (
-        <div className="w-full ">
+        <div className="w-full relative">
           <div className="mt-[2rem] ">
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col lg:flex-row w-full">
               <div className="">
                 <img
                   src={product.image}
@@ -92,12 +96,12 @@ const ProductDetails = () => {
                   className="flex-1 w-full md:w-[30rem] md:h-[40rem] object-cover mr-[2rem]"
                 />
 
-                {/* <HeartIcon product={product} /> */}
+                <HeartIcon product={product} />
               </div>
 
               <div className="flex-1 flex flex-col justify-between">
                 <h2 className="text-2xl font-semibold">{product.name}</h2>
-                <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
+                <p className="my-4 w-full text-[#B0B0B0]">
                   {product.description}
                 </p>
 
@@ -112,7 +116,7 @@ const ProductDetails = () => {
                     </h1>
                     <h1 className="flex items-center mb-6 w-[20rem]">
                       <FaClock className="mr-2 " /> Ajouté:{" "}
-                      {moment(product.createAt).fromNow()}
+                      {moment(product.createdAt).fromNow()}
                     </h1>
                     <h1 className="flex items-center mb-6">
                       <FaStar className="mr-2 " /> Avis: {product.numReviews}
